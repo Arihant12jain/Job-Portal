@@ -1,10 +1,9 @@
 package com.demo.JobPortal.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,6 +13,10 @@ public class Company{
     private int id;
     private String name;
     private String email;
+    @Embedded
     private Address address;
-
+@ManyToOne
+    List<JobProfile> jobs;
+@OneToOne
+    private User user;
 }
