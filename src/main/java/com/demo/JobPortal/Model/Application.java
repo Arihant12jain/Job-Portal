@@ -1,8 +1,7 @@
 package com.demo.JobPortal.Model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Application {
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private long id;
 
     @ManyToOne
     private User user;

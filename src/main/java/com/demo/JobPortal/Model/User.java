@@ -15,8 +15,8 @@ public class User {
     private long id;
     private String name;
     private String email;
-    private int password;
+    private String password;
     private String imageurl;
-    @Enumerated(EnumType.STRING)
-    private Role roole;
+
+    private String roole;
 }

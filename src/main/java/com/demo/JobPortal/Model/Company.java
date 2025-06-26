@@ -15,7 +15,7 @@ public class Company{
     private String email;
     @Embedded
     private Address address;
-@ManyToOne
+@OneToMany
     List<JobProfile> jobs;
 @OneToOne
     private User user;
