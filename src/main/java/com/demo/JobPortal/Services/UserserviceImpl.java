@@ -31,6 +31,7 @@ private AuthenticationManager autheticationmanager;
         user1.setPassword(passwordEncoder.encode(user.getPassword()));
         user1.setRoole(user.getRoole());
         User saved=userrepo.save(user1);
+        System.out.println(saved.getEmail());
         return saved;
     }
 

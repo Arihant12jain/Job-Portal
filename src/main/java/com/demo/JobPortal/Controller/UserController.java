@@ -18,7 +18,10 @@ public class UserController {
 
     @PostMapping("/signup")
     public User signup(@RequestBody User user){
-        return userservice.register(user);
+        System.out.println("Wy");
+        User sa= userservice.register(user);
+        System.out.println(sa.getEmail());
+        return sa;
     }
     @PostMapping("/signin")
     public String signin(@RequestBody Login login){

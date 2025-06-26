@@ -24,7 +24,7 @@ private UserRepo userrepo;
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
-                AuthorityUtils.createAuthorityList(user.getRoole())
+                AuthorityUtils.createAuthorityList("ROLE_"+user.getRoole())
         );
 
 
