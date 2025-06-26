@@ -5,10 +5,11 @@ import com.demo.JobPortal.Model.JobProfile;
 import com.demo.JobPortal.Request.CompanyRequest;
 import com.demo.JobPortal.repo.Companyrepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-
+@Service
 public class CompanyServiceImpl implements CompanyService{
 
     @Autowired

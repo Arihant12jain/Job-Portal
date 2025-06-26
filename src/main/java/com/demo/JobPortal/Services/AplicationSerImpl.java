@@ -4,11 +4,12 @@ import com.demo.JobPortal.Model.Application;
 import com.demo.JobPortal.Model.JobProfile;
 import com.demo.JobPortal.repo.ApplicationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class AplicationSerImpl implements ApllicationSer{
     @Autowired
     private ApplicationRepo applicationrepo;

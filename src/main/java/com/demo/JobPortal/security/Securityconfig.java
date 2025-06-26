@@ -27,11 +27,15 @@ public class Securityconfig {
     }
     @Bean
     SecurityFilterChain defaultsecurityFilterchain(HttpSecurity http) throws Exception{
-        http.authorizeHttpRequests((auth)->auth
-                .requestMatchers("/auth/signup","/auth/login").permitAll()
+        http
+        .csrf(csrf->csrf.disable())
+
+                .authorizeHttpRequests((auth)->
+                                auth.requestMatchers("/auth/signup","/auth/signin").permitAll()
                 .requestMatchers("/employee").hasRole("EMPLOYEE")
-                .requestMatchers("/employer").hasRole("EMPLOYER")
-                .anyRequest().authenticated())
+               .requestMatchers("/employer").hasRole("EMPLOYER")
+              .anyRequest().authenticated())
+
                 .httpBasic(Customizer.withDefaults())
                 .logout(logout->logout.permitAll());
         return http.build();
