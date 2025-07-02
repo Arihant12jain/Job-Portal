@@ -6,17 +6,31 @@ import com.demo.JobPortal.repo.ApplicationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
 @Service
 public class AplicationSerImpl implements ApllicationSer{
+
+
+
     @Autowired
     private ApplicationRepo applicationrepo;
+
+    @Override
+    public void create(Application application) {
+        Application app=new Application();
+        if(application.getJob()!=null){
+            app.setJob(application.getJob());
+        }
+        if(application.getUser()!=null){
+            app.setUser(application.getUser());
+        }
+        Application applica=applicationrepo.save(app);
+    }
+
     @Override
     public List<JobProfile> getJobsbyUserId(long employeeId) {
 List<JobProfile> profile=applicationrepo.findJobByUserId(employeeId);
-
 if(profile!=null){
     return profile;
 }
@@ -34,7 +48,9 @@ if(profile!=null){
     }
 
     @Override
-    public List<JobProfile> getJobsbyUserIdAndCompanyId(Long companyId) {
-        return List.of();
+    public List<JobProfile> getJobsbyUserIdAndCompanyId(Long employeeid, Long companyId) {
+        List<JobProfile> jobs=applicationrepo.findByUSerIdAndCompanyId(employeeid,companyId);
+
+        return jobs;
     }
 }

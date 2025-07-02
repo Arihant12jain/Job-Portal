@@ -13,5 +13,5 @@ public interface CompanyService {
 
     List<JobProfile> findAllByCompanyId(Long CompanyId);
 
-
+Company findByCompanyId(long cmpnyId);
 }

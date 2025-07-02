@@ -16,12 +16,10 @@ public class JobProfile {
 @ManyToOne
 private Company company;
 private  String location;
-private String exp;
+private int exp;
 
 private int packag;
 
 private String role;
-
-
 
 }

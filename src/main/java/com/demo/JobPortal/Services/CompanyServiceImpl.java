@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CompanyServiceImpl implements CompanyService{
 
@@ -23,7 +25,6 @@ public class CompanyServiceImpl implements CompanyService{
         company1.setAddress(company.getAddress());
         Company saved=componyrepo.save(company1);
         System.out.println(saved.getEmail()+company1.getEmail());
-
     }
 
     @Override
@@ -34,4 +35,13 @@ public class CompanyServiceImpl implements CompanyService{
         }
         return jobs;
     }
+    @Override
+    public Company findByCompanyId(long cmpnyId){
+        Optional<Company> cmpny=componyrepo.findById(cmpnyId);
+     if(cmpny.isPresent()){
+         return cmpny.get();
+     }
+     return null;
+    }
+
 }

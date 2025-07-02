@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Job {
+public class JobRequest {
     private int exp;
     private String role;
     private String location;
