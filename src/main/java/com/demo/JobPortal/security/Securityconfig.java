@@ -35,18 +35,20 @@ public class Securityconfig {
     SecurityFilterChain defaultsecurityFilterchain(HttpSecurity http) throws Exception{
         http
         .csrf(csrf->csrf.disable())
-
                 .authorizeHttpRequests((auth)->
                                 auth.requestMatchers("/auth/signup","/auth/signin").permitAll()
-                .requestMatchers("/employee").hasRole("EMPLOYEE")
-               .requestMatchers("/employer").hasRole("EMPLOYER")
+                .requestMatchers("/employee/**").hasRole("EMPLOYEE")
+               .requestMatchers("/employer/**").hasRole("EMPLOYER")
               .anyRequest().authenticated())
 
                 .formLogin(form->form.disable())
-                .logout(logout->logout.permitAll())
-         .cors(cors -> cors.configurationSource(corsConfigurationSource()));
-        return http.build();
+                .httpBasic(Customizer.withDefaults())
+                .logout(logout -> logout.permitAll())
+ .cors(cors -> cors.configurationSource(corsConfigurationSource()));
+
+                return http.build();
     }
+
     private CorsConfigurationSource corsConfigurationSource() {
         return new CorsConfigurationSource() {
             @Override
@@ -69,7 +71,9 @@ public class Securityconfig {
     public PasswordEncoder passwordencoder(){
 
         return new BCryptPasswordEncoder();
-}@Bean
+}
+
+@Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .userDetailsService(userDetailsService)

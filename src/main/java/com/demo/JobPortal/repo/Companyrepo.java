@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface Companyrepo extends JpaRepository<Company,Long> {
     List<JobProfile> findJobsById(Long companyId);
+
 }

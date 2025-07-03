@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class CompanyRequest {
-    private int id;
+
     private String name;
     private String email;
     @Embedded

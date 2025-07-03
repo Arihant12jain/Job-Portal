@@ -1,16 +1,13 @@
 package com.demo.JobPortal.Request;
 
-
-import com.demo.JobPortal.Model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class Login {
-    private String email;
-    private String password;
-    private String role;
+public class Applicationrequest {
+    private Long userid;
+    private Long jobid;
 }

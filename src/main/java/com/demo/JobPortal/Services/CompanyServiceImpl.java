@@ -2,6 +2,7 @@ package com.demo.JobPortal.Services;
 
 import com.demo.JobPortal.Model.Company;
 import com.demo.JobPortal.Model.JobProfile;
+import com.demo.JobPortal.Model.User;
 import com.demo.JobPortal.Request.CompanyRequest;
 import com.demo.JobPortal.repo.Companyrepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class CompanyServiceImpl implements CompanyService{
         }
         return jobs;
     }
+
+    @Override
+    public List<Company> findAll() {
+        return componyrepo.findAll();
+    }
+
     @Override
     public Company findByCompanyId(long cmpnyId){
         Optional<Company> cmpny=componyrepo.findById(cmpnyId);
@@ -43,5 +50,7 @@ public class CompanyServiceImpl implements CompanyService{
      }
      return null;
     }
+
+
 
 }

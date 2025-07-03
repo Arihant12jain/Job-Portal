@@ -19,5 +19,5 @@ private long id;
     private User user;
     @ManyToOne
     private JobProfile job;
-
+private boolean status;
 }

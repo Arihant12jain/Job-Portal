@@ -13,11 +13,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserserviceImpl implements Userservice{
 @Autowired
 private UserRepo userrepo;
-@Autowired
+
+
+
+    @Autowired
 private PasswordEncoder passwordEncoder;
 @Autowired
 private HttpServletRequest request;
@@ -53,5 +58,14 @@ private AuthenticationManager autheticationmanager;
             System.out.println("wrong");
             return "Invalid";
         }
+    }
+
+    @Override
+    public User findById(long id) {
+        return userrepo.findById(id).get();
+    }
+    @Override
+    public List<User> findAllUser(){
+        return userrepo.findAll();
     }
 }

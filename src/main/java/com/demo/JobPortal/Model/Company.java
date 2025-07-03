@@ -1,5 +1,6 @@
 package com.demo.JobPortal.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class Company{
     @Embedded
     private Address address;
 @OneToMany
+        @JsonManagedReference
     List<JobProfile> jobs;
 @OneToOne
     private User user;
